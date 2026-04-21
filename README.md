@@ -22,4 +22,4 @@ Cookie-urile pot conține identificatori care pot fi considerați date personale
 Funcționalitatea a fost testată în browser folosind DevTools (Application → Cookies), verificând comportamentul de creare, modificare și ștergere a cookie-urilor.
 
 ## Link aplicație
-[https://username.github.io/nume-repo/](https://annamariaegri13.github.io/lab8-9-gdpr/)
+https://annamariaegri13.github.io/lab8-9-gdpr/
