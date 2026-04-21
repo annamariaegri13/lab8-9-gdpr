@@ -5,17 +5,55 @@ layout: default
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-        document.cookie = "session=test GDPR";
-        document.cookie = "favorite_task=collect Data";
+    <title>Cookie Lab MDN</title>
 
-        function alertCookie() {
-            alert(document.cookie);
+    <script>
+        // 🔹 1. Setare cookie-uri
+        document.cookie = "username=student";
+        document.cookie = "theme=dark";
+        document.cookie = "session=GDPR_test";
+
+        // 🔹 2. Citire cookie-uri
+        function showAllCookies() {
+            alert("All cookies:\n" + document.cookie);
+        }
+
+        // 🔹 3. Citire cookie specific
+        function getCookie(name) {
+            let cookies = document.cookie.split(';');
+
+            for (let c of cookies) {
+                let [key, value] = c.trim().split('=');
+                if (key === name) return value;
+            }
+            return "not found";
+        }
+
+        function showUsername() {
+            alert("username = " + getCookie("username"));
+        }
+
+        // 🔹 4. Ștergere cookie
+        function deleteCookie(name) {
+            document.cookie = name + "=; max-age=0";
+            alert(name + " deleted");
+        }
+
+        // 🔹 5. Set cookie cu expirare (MDN exemplu)
+        function setTemporaryCookie() {
+            document.cookie = "tempCookie=12345; max-age=10";
+            alert("Temporary cookie set for 10 seconds");
         }
     </script>
 </head>
+
 <body>
-    <h2>Bine ai venit la lab</h2>
-    <button onclick="alertCookie()">Show cookies</button>
+    <h2>MDN Cookie Examples</h2>
+
+    <button onclick="showAllCookies()">Show all cookies</button>
+    <button onclick="showUsername()">Get username cookie</button>
+    <button onclick="deleteCookie('theme')">Delete theme cookie</button>
+    <button onclick="setTemporaryCookie()">Set temporary cookie</button>
+
 </body>
 </html>
