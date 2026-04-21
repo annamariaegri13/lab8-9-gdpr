@@ -7,64 +7,34 @@
 <style>
     body {
         font-family: Arial, sans-serif;
-        background: #f4f6f9;
-        margin: 0;
-        padding: 20px;
+        margin: 20px;
     }
 
     h1 {
         text-align: center;
-        color: #222;
     }
 
-    .container {
-        max-width: 900px;
-        margin: auto;
-    }
-
-    .card {
-        background: white;
-        padding: 20px;
-        margin: 15px 0;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
-
-    .card h2 {
-        margin-top: 0;
-        color: #333;
+    .section {
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ccc;
     }
 
     button {
-        background: #4a90e2;
-        border: none;
-        color: white;
-        padding: 10px 14px;
-        margin: 5px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.2s;
-    }
-
-    button:hover {
-        background: #357ab8;
+        margin-right: 5px;
+        margin-top: 5px;
     }
 
     .output {
         margin-top: 10px;
-        padding: 10px;
-        background: #f0f0f0;
-        border-radius: 8px;
         min-height: 20px;
     }
 </style>
 
 <script>
-    // COOKIE FUNCTIONS
     function setCookies() {
         document.cookie = "test1=hello";
         document.cookie = "test2=world";
-        alert("Cookies set!");
     }
 
     function showCookies() {
@@ -74,7 +44,6 @@
     function clearCookies() {
         document.cookie = "test1=; max-age=0";
         document.cookie = "test2=; max-age=0";
-        alert("Cookies cleared!");
     }
 
     function getTest2() {
@@ -86,16 +55,15 @@
                 return;
             }
         }
-        document.getElementById("out2").innerText = "not found";
+        document.getElementById("out2").innerText = "nu există";
     }
 
     function runOnce() {
-        alert("Aceasta acțiune rulează o singură dată (simulare cookie logic)");
+        alert("Acțiune executată");
     }
 
     function resetCookie() {
-        document.cookie = "test1=resetat; max-age=3600";
-        alert("Cookie reset!");
+        document.cookie = "test1=reset; max-age=3600";
     }
 
     function checkCookie() {
@@ -108,44 +76,38 @@
 
 <body>
 
-<div class="container">
+<h1>Exerciții cu document.cookie</h1>
 
-<h1>🍪 Exerciții cu document.cookie</h1>
-
-<div class="card">
-    <h2>1. Setarea și afișarea cookie-urilor</h2>
-    <button onclick="setCookies()">Setează cookie-uri</button>
-    <button onclick="showCookies()">Afișează cookie-uri</button>
+<div class="section">
+    <h3>1. Setarea și afișarea cookie-urilor</h3>
+    <button onclick="setCookies()">Setează</button>
+    <button onclick="showCookies()">Afișează</button>
     <button onclick="clearCookies()">Curăță</button>
     <div class="output" id="out1"></div>
 </div>
 
-<div class="card">
-    <h2>2. Obținerea unei valori specifice</h2>
-    <button onclick="getTest2()">Obține cookie 'test2'</button>
+<div class="section">
+    <h3>2. Obținerea unei valori specifice</h3>
+    <button onclick="getTest2()">Obține test2</button>
     <button onclick="clearCookies()">Curăță</button>
     <div class="output" id="out2"></div>
 </div>
 
-<div class="card">
-    <h2>3. Execuția unei acțiuni o singură dată</h2>
+<div class="section">
+    <h3>3. Acțiune o singură dată</h3>
     <button onclick="runOnce()">Execută</button>
-    <button onclick="clearCookies()">Curăță</button>
 </div>
 
-<div class="card">
-    <h2>4. Resetarea cookie-ului anterior</h2>
-    <button onclick="resetCookie()">Resetează cookie</button>
-    <button onclick="clearCookies()">Curăță</button>
+<div class="section">
+    <h3>4. Resetarea cookie-ului</h3>
+    <button onclick="resetCookie()">Resetează</button>
 </div>
 
-<div class="card">
-    <h2>5. Verificarea existenței unui cookie</h2>
-    <button onclick="checkCookie()">Verifică cookie</button>
+<div class="section">
+    <h3>5. Verificare cookie</h3>
+    <button onclick="checkCookie()">Verifică</button>
     <button onclick="clearCookies()">Curăță</button>
     <div class="output" id="out5"></div>
-</div>
-
 </div>
 
 </body>
