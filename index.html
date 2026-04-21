@@ -1,59 +1,152 @@
----
-layout: default
----
-
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
-    <title>Cookie Lab MDN</title>
+<meta charset="UTF-8">
+<title>Exerciții cu document.cookie</title>
 
-    <script>
-        // 🔹 1. Setare cookie-uri
-        document.cookie = "username=student";
-        document.cookie = "theme=dark";
-        document.cookie = "session=GDPR_test";
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 20px;
+    }
 
-        // 🔹 2. Citire cookie-uri
-        function showAllCookies() {
-            alert("All cookies:\n" + document.cookie);
-        }
+    h1 {
+        text-align: center;
+        color: #222;
+    }
 
-        // 🔹 3. Citire cookie specific
-        function getCookie(name) {
-            let cookies = document.cookie.split(';');
+    .container {
+        max-width: 900px;
+        margin: auto;
+    }
 
-            for (let c of cookies) {
-                let [key, value] = c.trim().split('=');
-                if (key === name) return value;
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    button {
+        background: #4a90e2;
+        border: none;
+        color: white;
+        padding: 10px 14px;
+        margin: 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #357ab8;
+    }
+
+    .output {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        min-height: 20px;
+    }
+</style>
+
+<script>
+    // COOKIE FUNCTIONS
+    function setCookies() {
+        document.cookie = "test1=hello";
+        document.cookie = "test2=world";
+        alert("Cookies set!");
+    }
+
+    function showCookies() {
+        document.getElementById("out1").innerText = document.cookie;
+    }
+
+    function clearCookies() {
+        document.cookie = "test1=; max-age=0";
+        document.cookie = "test2=; max-age=0";
+        alert("Cookies cleared!");
+    }
+
+    function getTest2() {
+        let cookies = document.cookie.split(';');
+        for (let c of cookies) {
+            let [k, v] = c.trim().split('=');
+            if (k === "test2") {
+                document.getElementById("out2").innerText = v;
+                return;
             }
-            return "not found";
         }
+        document.getElementById("out2").innerText = "not found";
+    }
 
-        function showUsername() {
-            alert("username = " + getCookie("username"));
-        }
+    function runOnce() {
+        alert("Aceasta acțiune rulează o singură dată (simulare cookie logic)");
+    }
 
-        // 🔹 4. Ștergere cookie
-        function deleteCookie(name) {
-            document.cookie = name + "=; max-age=0";
-            alert(name + " deleted");
-        }
+    function resetCookie() {
+        document.cookie = "test1=resetat; max-age=3600";
+        alert("Cookie reset!");
+    }
 
-        // 🔹 5. Set cookie cu expirare (MDN exemplu)
-        function setTemporaryCookie() {
-            document.cookie = "tempCookie=12345; max-age=10";
-            alert("Temporary cookie set for 10 seconds");
-        }
-    </script>
+    function checkCookie() {
+        let exists = document.cookie.includes("test1");
+        document.getElementById("out5").innerText = exists ? "EXISTĂ" : "NU EXISTĂ";
+    }
+</script>
+
 </head>
 
 <body>
-    <h2>MDN Cookie Examples</h2>
 
-    <button onclick="showAllCookies()">Show all cookies</button>
-    <button onclick="showUsername()">Get username cookie</button>
-    <button onclick="deleteCookie('theme')">Delete theme cookie</button>
-    <button onclick="setTemporaryCookie()">Set temporary cookie</button>
+<div class="container">
+
+<h1>🍪 Exerciții cu document.cookie</h1>
+
+<div class="card">
+    <h2>1. Setarea și afișarea cookie-urilor</h2>
+    <button onclick="setCookies()">Setează cookie-uri</button>
+    <button onclick="showCookies()">Afișează cookie-uri</button>
+    <button onclick="clearCookies()">Curăță</button>
+    <div class="output" id="out1"></div>
+</div>
+
+<div class="card">
+    <h2>2. Obținerea unei valori specifice</h2>
+    <button onclick="getTest2()">Obține cookie 'test2'</button>
+    <button onclick="clearCookies()">Curăță</button>
+    <div class="output" id="out2"></div>
+</div>
+
+<div class="card">
+    <h2>3. Execuția unei acțiuni o singură dată</h2>
+    <button onclick="runOnce()">Execută</button>
+    <button onclick="clearCookies()">Curăță</button>
+</div>
+
+<div class="card">
+    <h2>4. Resetarea cookie-ului anterior</h2>
+    <button onclick="resetCookie()">Resetează cookie</button>
+    <button onclick="clearCookies()">Curăță</button>
+</div>
+
+<div class="card">
+    <h2>5. Verificarea existenței unui cookie</h2>
+    <button onclick="checkCookie()">Verifică cookie</button>
+    <button onclick="clearCookies()">Curăță</button>
+    <div class="output" id="out5"></div>
+</div>
+
+</div>
 
 </body>
 </html>
