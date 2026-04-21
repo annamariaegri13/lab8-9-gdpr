@@ -2,8 +2,18 @@
 <html>
 <head>
     <title>Lab GDPR</title>
+    <script>
+        document.cookie = "session=test GDPR";
+        document.cookie = "favorite_task=collect Data";
+
+        function alertCookie() {
+            alert(document.cookie);
+        }
+    </script>
 </head>
+
 <body>
-    <h1>Bine ai venit la laborator</h1>
+    <h1>Bine ai venit la lab</h1>
+    <button onclick="alertCookie()">Show cookies</button>
 </body>
 </html>
